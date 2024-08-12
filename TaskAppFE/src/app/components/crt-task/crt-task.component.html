@@ -1,0 +1,39 @@
+<div class="mi-componente" style="background-color: #f0f0f0; display: flex;">
+  <!-- Contenido del componente -->
+  <app-nav></app-nav>
+  <div class="card" style="display: flex; justify-content: center; margin: 0 auto; padding: 30px;">  
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form">
+      <div class="p-field">
+          <label for="id">ID</label>
+          <input id="id" type="text" pInputText formControlName="id" readonly/>
+      </div>
+
+      <div class="p-field">
+          <label for="description">Descripción</label>
+          <textarea 
+              rows="5" 
+              cols="30" 
+              pInputTextarea 
+              formControlName="description">
+          </textarea>
+      </div>
+
+      <div class="p-field">
+          <label for="status">Estado</label>
+          <p-dropdown 
+              formControlName="status" 
+              [options]="statusOptions"
+              placeholder="Asigne un estado a la tarea a crear" />
+      </div>
+
+      <div class="p-field">
+          <label for="dateRange">Fecha de inicio y finalización</label>
+          <p-calendar id="dateRange" formControlName="dateRange" selectionMode="range"></p-calendar>
+      </div>
+
+      <div class="button-container">
+        <button pButton type="submit" label="Crear Tarea" class="p-mt-2"></button>
+      </div>
+    </form>
+  </div>
+</div>

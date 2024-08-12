@@ -1,0 +1,20 @@
+.p-field {
+    margin-bottom: 1.5rem;
+}
+
+.p-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.p-field input,
+.p-field textarea,
+.p-field p-dropdown,
+.p-field p-calendar {
+    width: 100%;
+}
+
+.p-mt-2 {
+    margin-top: 2rem;
+}

@@ -1,0 +1,56 @@
+<!--<p>shw-task works!</p>-->
+
+<div class="mi-componente" style="background-color: #f0f0f0; display: flex; ">
+    <!-- Contenido del componente -->
+    <app-nav></app-nav>
+    <div class="card" style="display: flex; flex-direction: column;  margin: 0 auto; padding: 30px;">
+        <p-table
+            [value]="tasks"
+            [(selection)]="selectedTasks"
+            dataKey="id"
+            [tableStyle]="{'min-width': '50rem'}"
+            [scrollable]="true"
+            scrollHeight="600px"
+            (onRowSelect)="selectedRow($event)"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 4rem"><p-tableHeaderCheckbox /></th>
+                    <th pSortableColumn="id">Id de Tarea<p-sortIcon field="id" /></th>
+                    <th pSortableColumn="description">Descripcion de Tarea<p-sortIcon field="description" /></th>
+                    <th pSortableColumn="status">Estado de la tarea<p-sortIcon field="status" /></th>
+                    <th pSortableColumn="dateRange[0]">Fecha de inicio de tarea<p-sortIcon field="dateRange[0]" /></th>
+                    <th pSortableColumn="dateRange[1]">Fecha de fin de tarea<p-sortIcon field="dateRange[1]" /></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>
+                        <p-columnFilter type="text" field="id" [showClearButton]="true" />
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="description" [showClearButton]="true" />
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="status" [showClearButton]="true" />
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="dateRange[0]" [showClearButton]="true" />
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="dateRange[1]" [showClearButton]="true" />
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td><p-tableCheckbox [value]="product" /></td>
+                    <td>{{product.id}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.status}}</td>
+                    <td>{{product.dateRange[0]}}</td>
+                    <td>{{product.dateRange[1]}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

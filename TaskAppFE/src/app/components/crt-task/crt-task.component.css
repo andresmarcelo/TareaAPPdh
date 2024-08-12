@@ -1,0 +1,35 @@
+.task-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.p-field {
+    margin-bottom: 1.5rem;
+}
+
+.p-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.p-field input,
+.p-field textarea,
+.p-field p-dropdown,
+.p-field p-calendar {
+    width: 100%;
+}
+
+.p-mt-2 {
+    margin-top: 2rem;
+}

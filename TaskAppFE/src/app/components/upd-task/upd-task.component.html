@@ -1,0 +1,131 @@
+<!--<p>upd-task works!</p>-->
+
+<div class="mi-componente" style="background-color: #f0f0f0; display: flex;">
+    <!-- Contenido del componente -->
+    <app-nav></app-nav>
+    
+    <!--El div contiene la busqueda de la tarea por Id-->
+    <div class="card" style="display: flex; flex-direction: column;  margin: 0 auto; padding: 30px;">
+        <p-fieldset legend="Busqueda por Id" [toggleable]="true" [style]="{'margin': '0 auto'}">
+        <div class="p-field" style="margin-bottom: 20px;">
+            <label for="id">ID de la tarea</label>
+            <p-dropdown 
+                [options]="tasks"
+                [(ngModel)]="selectedTasks"
+                optionLabel="id"
+                [filter]="true"
+                filterBy="id" 
+                [showClear]="true"
+                placeholder="Seleccione el id de la tarea"
+                (onChange)="buscaID($event)"
+                >
+                    <ng-template pTemplate="selectedItem" let-selectedOption>
+                        <div class="flex align-items-center gap-2">
+                            <div>{{ selectedOption.id }}</div>
+                        </div>
+                    </ng-template>
+                    <ng-template let-tarea pTemplate="item">
+                        <div class="flex align-items-center gap-2">
+                            <div>{{ tarea.id }}</div>
+                        </div>
+                    </ng-template>
+            </p-dropdown>
+        </div>
+    
+        <div class="p-field">
+            <label for="status">Descripción</label>
+            <p>{{selectedTasks.description}}</p>
+        </div>
+
+        <div class="p-field">
+            <label for="status">Estado</label>
+            <p>{{selectedTasks.status}}</p>
+        </div>
+
+        <div class="p-field">
+            <label for="status">Fecha de inicio</label>
+            <p>{{selectedTasks.dateRange[0]}}</p>
+        </div>
+
+        <div class="p-field">
+            <label for="status">Fecha de fin</label>
+            <p>{{selectedTasks.dateRange[1]}}</p>
+        </div>
+
+        </p-fieldset>
+    </div>
+
+    <!--El div contiene la actualizacion o valores a mapear en el nuevo registro del array-->
+    <div class="card" style="display: flex; flex-direction: column;  margin: 0 auto; padding: 30px;">
+        <p-fieldset legend="Actualizar/Ajustar tarea" [toggleable]="true" [style]="{'margin': '0 auto'}">
+        <div class="p-field" style="margin-bottom: 20px;">
+            <label for="id">ID de la tarea</label>
+            <p-dropdown 
+                [options]="tasks"
+                [(ngModel)]="selectedTasks"
+                optionLabel="id"
+                [filter]="true"
+                filterBy="id" 
+                [showClear]="true"
+                placeholder="Seleccione el id de la tarea">
+                    <ng-template pTemplate="selectedItem" let-selectedOption>
+                        <div class="flex align-items-center gap-2">
+                            <div>{{ selectedOption.id }}</div>
+                        </div>
+                    </ng-template>
+                    <ng-template let-tarea pTemplate="item">
+                        <div class="flex align-items-center gap-2">
+                            <div>{{ tarea.id }}</div>
+                        </div>
+                    </ng-template>
+            </p-dropdown>
+        </div>
+    
+        <div class="p-field">
+            <label for="status">Descripción</label>
+            <textarea 
+                rows="5"
+                cols="30" 
+                pInputTextarea 
+                [(ngModel)]="NEWvalue">
+            </textarea>
+        </div>
+
+        <div class="p-field">
+            <label for="status">Estado</label>
+            <p-dropdown 
+                [options]="statusOptions" 
+                [(ngModel)]="NEWstatus" 
+
+                placeholder="Seleccione el estado" />
+        </div>
+
+        <div class="p-field">
+            <label for="status">Fecha de inicio</label>
+            <p-calendar [(ngModel)]="dateIni" />
+        </div>
+
+        <div class="p-field">
+            <label for="status">Fecha de fin</label>
+            <p-calendar [(ngModel)]="dateFin" />
+        </div>
+
+        <p-toast />
+        <p-confirmDialog
+            acceptLabel="Si"
+            rejectLabel="No"
+        >
+            <ng-template pTemplate="message" let-message>
+                <div class="flex flex-column align-items-center w-full gap-3 border-bottom-1 surface-border">
+                    <i class="pi pi-exclamation-circle text-6xl text-primary-500"></i>
+                    <p>{{ message.message }}</p>
+                </div>
+            </ng-template>
+        </p-confirmDialog>
+        <p-button (onClick)="confirm()" label="Guardar cambios" />
+
+        </p-fieldset>
+    </div>
+    
+</div>
+

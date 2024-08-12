@@ -1,0 +1,15 @@
+.centDiv {
+    display: flex;
+    flex-direction: column; /* Cambia la dirección a columna */
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ajusta la altura según sea necesario */
+    text-align: center;
+    background-image: url('/assets/forest-7922999_1920.jpg'); /* Cambia 'ruta/a/tu/imagen.jpg' por la ruta de tu imagen */
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
+    background-position: center; /* Centra la imagen */
+}
+
+p-progressSpinner {
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+}
